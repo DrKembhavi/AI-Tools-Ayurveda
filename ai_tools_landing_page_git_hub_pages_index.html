@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Tools • Jain AGM AMC&H</title>
+  <meta name="description" content="Launchpad for our AI tools for Ayurveda education and research." />
+  <meta property="og:title" content="AI Tools • Jain AGM AMC&H" />
+  <meta property="og:description" content="Launchpad for our AI tools for Ayurveda education and research." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: #0f172a;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --accent: #38bdf8;
+      --accent-2: #22d3ee;
+      --ring: rgba(56,189,248,.35);
+      --success: #22c55e;
+    }
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; 
+      color:var(--text); background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(56,189,248,.12), transparent 60%),
+        radial-gradient(800px 400px at 90% 0%, rgba(34,211,238,.12), transparent 60%),
+        var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:24px}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:grid; place-items:center; font-weight:800; color:#0b1020}
+    nav a{opacity:.9; padding:10px 12px; border-radius:10px}
+    nav a:hover{background:rgba(148,163,184,.12)}
+    .hero{
+      display:grid; grid-template-columns:1.3fr 1fr; gap:28px; align-items:center; padding:32px 0 8px;
+    }
+    .hero h1{font-size:clamp(28px,4.6vw,46px); line-height:1.1; margin:0 0 12px}
+    .hero p{color:var(--muted); font-size:clamp(15px,1.2vw,18px)}
+    .cta{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    .btn{padding:12px 16px; border-radius:12px; background:#0b132d; border:1px solid rgba(148,163,184,.25); display:inline-flex; align-items:center; gap:10px; font-weight:600}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#0b1020; border:none}
+    .btn:hover{filter:brightness(1.05)}
+    .hero-card{background:linear-gradient(180deg,rgba(56,189,248,.12),rgba(56,189,248,.05)); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px}
+    .stat{display:grid; grid-template-columns:auto 1fr; gap:10px 14px; align-items:center; margin-top:8px}
+    .stat .kpi{font-weight:700}
+    .section{padding:36px 0}
+    .section h2{margin:0 0 6px; font-size:clamp(20px,2.8vw,28px)}
+    .section p.lead{margin:0 0 18px; color:var(--muted)}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
+    .card{background:var(--card); border:1px solid rgba(148,163,184,.2); border-radius:16px; padding:16px; position:relative; overflow:hidden}
+    .card .badge{position:absolute; top:12px; right:12px; padding:6px 10px; border-radius:999px; background:rgba(56,189,248,.12); border:1px solid rgba(56,189,248,.35); font-size:12px}
+    .card h3{margin:8px 0 4px; font-size:18px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .card-actions{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
+    .pill{padding:8px 12px; border-radius:10px; background:#0b132d; border:1px solid rgba(148,163,184,.25); font-weight:600; font-size:14px}
+    .pill.launch{background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#0b1020; border:none}
+    .pill.icon{display:inline-flex; align-items:center; gap:8px}
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+    .notice{margin-top:12px; font-size:13px; color:var(--muted)}
+    .footer{padding:32px 0 24px; color:var(--muted); font-size:14px}
+    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{background:rgba(148,163,184,.12); border:1px solid rgba(148,163,184,.25); padding:6px 10px; border-radius:999px; font-size:12px}
+    .search{display:flex; gap:10px; align-items:center; margin:12px 0 18px}
+    .search input{flex:1; padding:12px 14px; border-radius:12px; background:#0b132d; border:1px solid rgba(148,163,184,.25); color:var(--text)}
+    .empty{padding:16px; border-radius:12px; border:1px dashed rgba(148,163,184,.3); color:var(--muted)}
+    .tagline{display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.35); font-size:12px; font-weight:600; color:#a7f3d0}
+    .credits a{opacity:.9}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:rgba(148,163,184,.15); padding:2px 6px; border-radius:6px; border:1px solid rgba(148,163,184,.25)}
+    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">AI</div>
+        <div>
+          <div style="font-weight:700; letter-spacing:.2px">AI Tools Hub</div>
+          <div style="font-size:12px; color:var(--muted)">Jain AGM Ayurvedic Medical College & Hospital</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="tagline">🚀 Instant access • No registration required</span>
+        <h1>One landing page for all our AI tools</h1>
+        <p>Launch OSCE/OSPE stations, MCQ generators, assessment dashboards, and more—built for Ayurveda education and research. Bookmark this page and share it with your faculty and students.</p>
+        <div class="cta">
+          <a class="btn primary" href="#tools">Browse Tools</a>
+          <button class="btn" id="copy-link">
+            <span aria-hidden="true">🔗</span> Copy page link
+          </button>
+        </div>
+        <div class="chips" style="margin-top:14px">
+          <div class="chip">NCISM aligned</div>
+          <div class="chip">CBDC • PBL • Bloom's</div>
+          <div class="chip">No sign-in</div>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Highlights">
+        <div class="stat"><div class="kpi">10+</div><div>Ready-to-use tools</div></div>
+        <div class="stat"><div class="kpi"><span id="uptime">99.9%</span></div><div>Hosted on GitHub Pages</div></div>
+        <div class="stat"><div class="kpi">2-step</div><div>Easy link updates</div></div>
+        <p class="notice">Tip: Edit the <span class="kbd">tools</span> list in the code to add/update links. No backend needed.</p>
+      </div>
+    </section>
+
+    <section id="tools" class="section">
+      <h2>Tools</h2>
+      <p class="lead">Click <em>Launch</em> to open a tool in a new tab. Use <em>Copy link</em> to share.</p>
+      <div class="search">
+        <input id="search" type="search" placeholder="Search tools by name, tags, or description…" aria-label="Search tools" />
+        <button class="btn" id="clear-search" title="Clear">✖</button>
+      </div>
+      <div id="tools-grid" class="grid" role="list"></div>
+      <div id="empty" class="empty" hidden>No tools match your search.</div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About</h2>
+      <p class="lead">This is an open landing page to aggregate links to our AI tools. It’s a static site—fast, secure, and simple. Update the <span class="kbd">tools</span> array in the HTML to change what appears here.</p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p class="lead">Questions or suggestions? Email <a href="mailto:principal@example.edu">principal@example.edu</a> or raise an issue on the GitHub repository.</p>
+    </section>
+
+    <footer class="footer">
+      <div class="credits">© <span id="year"></span> Jain AGM AMC&H • Built with ❤️ on GitHub Pages • <a href="#" id="view-source">View Source</a></div>
+    </footer>
+  </div>
+
+  <script>
+    // =========================
+    // 1) EDIT YOUR TOOLS HERE
+    // =========================
+    // Replace the placeholder URLs (href) with your live tool links.
+    // You can add as many tools as you want.
+    const tools = [
+      {
+        name: "RESEARCH METHODOLOGY ASSESSMENT TOOL",
+        desc: "ASSESS YOUR KNOWLEDGE OF RESEARCH METHODOLOGY.",
+        href: "https://drkembhavi.github.io/ayu-pg-resmeth-assessment-tool/",
+        tags: ["assessment","research","checklist"],
+        badge: "Education"
+      },
+      {
+        name: "Research Methodology MCQ Tool",
+        desc: "Generate, shuffle, and export MCQs aligned to Bloom’s levels.",
+        href: "https://drkembhavi.github.io/ayu-pg-resmeth-mcq-assessment-tool/",
+        tags: ["mcq","quiz","bloom"],
+        badge: "Exam"
+      },
+      {
+        name: "Intern Skill Assessment Tool",
+        desc: "assessment of various skills of interns.",
+        href: "https://drkembhavi.github.io/bams-skill-assessment-tool/",
+        tags: ["intern"],
+        badge: "assessment"
+      },
+      {
+        name: "Sample Size Calculator",
+        desc: "Clinical Trial Sample Size Calculator.",
+        href: "https://drkembhavi.github.io/sample-size-calc/",
+        tags: ["sample size"],
+        badge: "Clnical"
+      }
+    ];
+
+    // =========================
+    // 2) (OPTIONAL) REPO LINK
+    // =========================
+    // Set this to your repository URL so the footer “View Source” link works.
+    const repositoryUrl = "https://github.com/your-domain/ai-tools-landing";
+
+    // ===== No edits needed below this line =====
+
+    const grid = document.getElementById('tools-grid');
+    const empty = document.getElementById('empty');
+    const search = document.getElementById('search');
+    const clearSearch = document.getElementById('clear-search');
+
+    function createCard(tool){
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.setAttribute('role','listitem');
+      card.innerHTML = `
+        <span class="badge">${tool.badge ?? 'Tool'}</span>
+        <h3>${tool.name}</h3>
+        <p>${tool.desc}</p>
+        <div class="card-actions">
+          <a class="pill launch" href="${tool.href}" target="_blank" rel="noopener noreferrer">Launch</a>
+          <button class="pill icon" data-copy="${tool.href}" aria-label="Copy ${tool.name} link">📋 Copy link</button>
+          ${Array.isArray(tool.tags) ? tool.tags.map(t=>`<span class="pill">#${t}</span>`).join('') : ''}
+        </div>`;
+      return card;
+    }
+
+    function render(list){
+      grid.innerHTML = '';
+      list.forEach(t => grid.appendChild(createCard(t)) );
+      empty.hidden = list.length !== 0;
+    }
+
+    function filterTools(q){
+      q = q.trim().toLowerCase();
+      if(!q) return tools;
+      return tools.filter(t => {
+        const hay = [t.name, t.desc, ...(t.tags||[])].join(' ').toLowerCase();
+        return hay.includes(q);
+      });
+    }
+
+    // Copy handlers
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-copy]');
+      if(!btn) return;
+      const url = btn.getAttribute('data-copy');
+      navigator.clipboard.writeText(url).then(()=>{
+        const txt = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(()=> btn.textContent = txt, 1200);
+      });
+    });
+
+    // Search handlers
+    search.addEventListener('input', ()=> render(filterTools(search.value)) );
+    clearSearch.addEventListener('click', ()=>{ search.value=''; render(tools); search.focus(); });
+
+    // Misc UI
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('copy-link').addEventListener('click', ()=>{
+      navigator.clipboard.writeText(location.href).then(()=>{
+        const btn = document.getElementById('copy-link');
+        const old = btn.textContent; btn.textContent = 'Link copied!';
+        setTimeout(()=> btn.textContent = old, 1200);
+      })
+    });
+    const viewSource = document.getElementById('view-source');
+    if(repositoryUrl){ viewSource.href = repositoryUrl; } else { viewSource.remove(); }
+
+    // Initial render
+    render(tools);
+  </script>
+</body>
+</html>
